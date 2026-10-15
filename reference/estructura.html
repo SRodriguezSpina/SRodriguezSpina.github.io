@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" style="">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+        name="viewport">
+    <meta content="mobile_tab" name="shell-type">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#ded3c2",
+                        "on-secondary-container": "#4A3F38",
+                        "on-primary": "#ffffff",
+                        "secondary": "#926452",
+                        "border-subtle": "#ACACAB",
+                        "surface-variant": "#e9decb",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#dda891",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#3a0a00",
+                        "surface": "#F3EBDB",
+                        "on-background": "#4A3F38",
+                        "surface-container-high": "#e8dfd0",
+                        "surface-container": "#eee6d7",
+                        "primary-fixed": "#ffdbd0",
+                        "primary-container": "#db7657",
+                        "on-surface-variant": "#747472",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-bright": "#fbf8f2",
+                        "on-secondary-fixed-variant": "#643d2d",
+                        "tertiary": "#926452",
+                        "surface-dim": "#dfd5c4",
+                        "tertiary-fixed-dim": "#f1baa3",
+                        "error-container": "#ffdad6",
+                        "text-primary": "#4A3F38",
+                        "secondary-container": "#f4e0d4",
+                        "on-primary-fixed-variant": "#7c2e15",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#db7657",
+                        "inverse-primary": "#ffb59f",
+                        "on-tertiary-container": "#4A3F38",
+                        "secondary-fixed-dim": "#f3baa4",
+                        "primary-fixed-dim": "#ffb59f",
+                        "on-secondary-fixed": "#311306",
+                        "primary": "#db7657",
+                        "border-medium": "#A4A4A4",
+                        "outline": "#747472",
+                        "on-tertiary-fixed": "#301305",
+                        "outline-variant": "#ACACAB",
+                        "surface-canvas": "#F3EBDB",
+                        "background": "#F3EBDB",
+                        "inverse-on-surface": "#fbf8f2",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#ffffff",
+                        "on-surface": "#4A3F38",
+                        "secondary-fixed": "#ffdbce",
+                        "on-tertiary-fixed-variant": "#643d2c",
+                        "surface-container-low": "#faf5ec",
+                        "inverse-surface": "#352c26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin": "2rem",
+                        "space-lg": "1.5rem",
+                        "space-sm": "0.5rem",
+                        "space-xs": "0.25rem",
+                        "space-xl": "2.5rem",
+                        "gutter": "1.5rem",
+                        "space-md": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-xl-mobile": ["Geist"],
+                        "body-sm": ["Geist"],
+                        "body-md": ["Geist"],
+                        "label-xs": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-xl": ["Geist"],
+                        "headline-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "label-xs": ["11px", { "lineHeight": "14px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "headline-sm": ["15px", { "lineHeight": "22px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        @layer base {
+
+            html,
+            body {
+                width: 100vw;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                overscroll-behavior: none;
+            }
+
+            .pb-safe {
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+            }
+
+            .pt-safe {
+                padding-top: env(safe-area-inset-top, 0px);
+            }
+
+            main>:first-child {
+                margin-top: 0 !important;
+            }
+
+            main>:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen relative">
+    <!-- Botón de tema flotante y ultra sutil en esquina superior derecha sin barra rígida ni borde divisor -->
+    <div class="absolute top-4 right-4 z-40 pt-safe"><button aria-label="Cambiar tema"
+            class="w-9 h-9 rounded-full bg-surface-container/70 hover:bg-surface-container border border-border-subtle/30 flex items-center justify-center text-[#543D32] transition-colors shadow-sm"
+            id="theme-toggle" type="button"><span
+                class="material-symbols-outlined text-[18px]">dark_mode</span></button></div>
+    <main class="flex flex-col relative w-full pt-safe pb-28 bg-surface flex-grow">
+        <div class="flex flex-col w-full px-gutter gap-space-lg">
+            
+            <!-- 1. HERO / PRESENTACIÓN (Variante 1: Minimalista & Fluido Centrado) -->
+            <header class="flex flex-col items-center text-center pt-8 gap-space-md">
+                <div class="relative"><img alt="Santi Rodríguez - Desarrollador Backend"
+                        class="w-24 h-24 rounded-full object-cover border-2 border-border-subtle/40 shadow-md bg-surface-container mx-auto"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX2b9sE9alerR64s3dYgbwDyQJHV1HaE8z4pHm2RF6j2ATop346QVaKn9VBCO7TMzAKStAmXy6UPZ9ckPo1_y4sEy0kKLui1LvZrmEPaMg1BIM1S5ZkCjFfI6Y1rFNlNC3OwGphRo0hPNzlGS7r9NCjRk8m0Tb7jPmjCS73jVLsTz6ciCyCzMCaoUTi-doNDoejzPKLOKFj_mRWQP7rXctB81ae9pffnCTj5HZOK26r5pmVb4rpwwQ0Qm9HDUidvlGgRqcgA8xEFf2eQ">
+                </div>
+                <div class="flex flex-col items-center gap-1.5 max-w-sm">
+                    <h1
+                        class="font-headline-xl-mobile text-headline-xl-mobile text-[#352c26] tracking-tight font-semibold">
+                        Santi Rodríguez</h1><span
+                        class="font-label-md text-label-md text-secondary font-medium tracking-wide">Desarrollador
+                        Backend</span>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pt-1">Especializado en
+                        arquitectura de lógica de negocio, diseño de APIs RESTful/GraphQL escalables e integración de IA
+                        aplicada.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-space-xs w-full pt-1"><a
+                        class="flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm text-on-surface hover:bg-surface-container transition-colors"
+                        href="https://github.com" rel="noopener noreferrer" target="_blank"><span
+                            class="material-symbols-outlined text-[18px] text-[#543D32]">terminal</span><span
+                            class="font-label-sm text-label-sm font-medium">GitHub</span></a><a
+                        class="flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm text-on-surface hover:bg-surface-container transition-colors"
+                        href="https://linkedin.com" rel="noopener noreferrer" target="_blank"><span
+                            class="material-symbols-outlined text-[18px] text-[#543D32]">share</span><span
+                            class="font-label-sm text-label-sm font-medium">LinkedIn</span></a><a
+                        class="flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm text-on-surface hover:bg-surface-container transition-colors"
+                        href="#contacto"><span
+                            class="material-symbols-outlined text-[18px] text-[#543D32]">alternate_email</span><span
+                            class="font-label-sm text-label-sm font-medium">Contacto</span></a><a
+                        class="flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-xl bg-[#543D32] text-on-primary shadow-sm hover:opacity-90 transition-opacity"
+                        href="#cv-download" id="download-cv-btn"><span
+                            class="material-symbols-outlined text-[18px] text-on-primary">file_download</span><span
+                            class="font-label-sm text-label-sm font-medium text-white">CV (PDF)</span></a></div>
+            </header>
+            
+            <!-- 2. PROYECTOS DESTACADOS (Opción 2: Minimal Monospace & Technical Card) -->
+            <section aria-labelledby="section-proyectos" class="flex flex-col gap-space-md">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 font-mono">
+                        <span class="material-symbols-outlined text-[#926452] text-[18px]">folder</span>
+                        <h2 class="font-label-md text-label-md text-[#4A3F38] font-medium tracking-tight"
+                            id="section-proyectos">
+                            ~/ proyectos-destacados
+                        </h2>
+                    </div>
+                    <span class="font-label-xs text-label-xs text-[#926452] font-mono">[03/03]</span>
+                </div>
+                <!-- Card 1 -->
+                <article class="flex flex-col p-4 rounded-xl bg-white border border-[#DCD4C7] shadow-sm gap-3.5">
+                    <!-- Cabecera -->
+                    <div class="flex items-start justify-between gap-2">
+                        <h3 class="font-headline-sm text-headline-sm text-[#4A3F38] font-semibold leading-snug">
+                            Motor de Facturación y Liquidación Distribuida
+                        </h3>
+                        <span
+                            class="shrink-0 px-2 py-0.5 rounded bg-[#FAF5EC] border border-[#DCD4C7] font-label-xs text-label-xs text-[#926452] font-mono whitespace-nowrap">
+                            Sistemas Distribuidos
+                        </span>
+                    </div>
+                    <!-- Problema -->
+                    <div class="flex flex-col gap-1">
+                        <span
+                            class="font-label-xs text-label-xs text-[#926452] font-mono uppercase tracking-wider font-medium">Problema</span>
+                        <p class="font-body-sm text-body-sm text-[#4A3F38] leading-relaxed">
+                            Cuellos de botella y bloqueos en la liquidación financiera con más de 100k transacciones
+                            mensuales en bases relacionales monolíticas.
+                        </p>
+                    </div>
+                    <!-- Solución -->
+                    <div class="flex flex-col gap-1 p-2.5 rounded bg-[#FAF5EC] border border-[#DCD4C7]/60">
+                        <span
+                            class="font-label-xs text-label-xs text-[#9a4429] font-mono uppercase tracking-wider font-medium">Solución
+                            Técnica</span>
+                        <p class="font-body-sm text-body-sm text-[#4A3F38] leading-relaxed">
+                            Arquitectura asíncrona por eventos con workers concurrentes en Go, colas de mensajería,
+                            control de idempotencia transaccional y procesamiento en batches optimizados.
+                        </p>
+                    </div>
+                    <!-- Conceptos y Stack -->
+                    <div class="flex flex-col gap-1.5 pt-0.5">
+                        <span
+                            class="font-label-xs text-label-xs text-[#926452] font-mono uppercase tracking-wider font-medium">Conceptos
+                            &amp; Stack</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Go</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">PostgreSQL</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">RabbitMQ</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Workers</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Event-Driven</span>
+                        </div>
+                    </div>
+                    <!-- Footer / GitHub CTA -->
+                    <div class="pt-1 border-t border-[#DCD4C7]/40">
+                        <a class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-[#FAF5EC] hover:bg-[#eee6d7] border border-[#DCD4C7] text-[#4A3F38] font-label-sm text-label-sm font-medium transition-colors"
+                            href="https://github.com" rel="noopener noreferrer" target="_blank">
+                            <span class="material-symbols-outlined text-[16px] text-[#4A3F38]">terminal</span>
+                            <span class="">Código fuente en GitHub ↗</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Card 2 -->
+                <article class="flex flex-col p-4 rounded-xl bg-white border border-[#DCD4C7] shadow-sm gap-3.5">
+                    <!-- Cabecera -->
+                    <div class="flex items-start justify-between gap-2">
+                        <h3 class="font-headline-sm text-headline-sm text-[#4A3F38] font-semibold leading-snug">
+                            API de Búsqueda Semántica y RAG Documental
+                        </h3>
+                        <span
+                            class="shrink-0 px-2 py-0.5 rounded bg-[#FAF5EC] border border-[#DCD4C7] font-label-xs text-label-xs text-[#926452] font-mono whitespace-nowrap">
+                            RAG &amp; Embeddings
+                        </span>
+                    </div>
+                    <!-- Problema -->
+                    <div class="flex flex-col gap-1">
+                        <span
+                            class="font-label-xs text-label-xs text-[#926452] font-mono uppercase tracking-wider font-medium">Problema</span>
+                        <p class="font-body-sm text-body-sm text-[#4A3F38] leading-relaxed">
+                            Recuperación lenta y baja relevancia en consultas léxicas sobre un repositorio de 50.000
+                            documentos técnicos no estructurados.
+                        </p>
+                    </div>
+                    <!-- Solución -->
+                    <div class="flex flex-col gap-1 p-2.5 rounded bg-[#FAF5EC] border border-[#DCD4C7]/60">
+                        <span
+                            class="font-label-xs text-label-xs text-[#9a4429] font-mono uppercase tracking-wider font-medium">Solución
+                            Técnica</span>
+                        <p class="font-body-sm text-body-sm text-[#4A3F38] leading-relaxed">
+                            Pipeline de ingesta incremental con chunking adaptativo, generación de embeddings densos
+                            indexados en Qdrant y capa de caché semántico en Redis.
+                        </p>
+                    </div>
+                    <!-- Conceptos y Stack -->
+                    <div class="flex flex-col gap-1.5 pt-0.5">
+                        <span
+                            class="font-label-xs text-label-xs text-[#926452] font-mono uppercase tracking-wider font-medium">Conceptos
+                            &amp; Stack</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Python
+                                (FastAPI)</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Qdrant</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Redis</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Vector
+                                DB</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">LangChain</span>
+                        </div>
+                    </div>
+                    <!-- Footer / GitHub CTA -->
+                    <div class="pt-1 border-t border-[#DCD4C7]/40">
+                        <a class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-[#FAF5EC] hover:bg-[#eee6d7] border border-[#DCD4C7] text-[#4A3F38] font-label-sm text-label-sm font-medium transition-colors"
+                            href="https://github.com" rel="noopener noreferrer" target="_blank">
+                            <span class="material-symbols-outlined text-[16px] text-[#4A3F38]">terminal</span>
+                            <span class="">Código fuente en GitHub ↗</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Card 3 -->
+                <article class="flex flex-col p-4 rounded-xl bg-white border border-[#DCD4C7] shadow-sm gap-3.5">
+                    <!-- Cabecera -->
+                    <div class="flex items-start justify-between gap-2">
+                        <h3 class="font-headline-sm text-headline-sm text-[#4A3F38] font-semibold leading-snug">
+                            Gestor de Reservas con Control de Concurrencia
+                        </h3>
+                        <span
+                            class="shrink-0 px-2 py-0.5 rounded bg-[#FAF5EC] border border-[#DCD4C7] font-label-xs text-label-xs text-[#926452] font-mono whitespace-nowrap">
+                            Proyecto Académico
+                        </span>
+                    </div>
+                    <!-- Problema -->
+                    <div class="flex flex-col gap-1">
+                        <span
+                            class="font-label-xs text-label-xs text-[#926452] font-mono uppercase tracking-wider font-medium">Problema</span>
+                        <p class="font-body-sm text-body-sm text-[#4A3F38] leading-relaxed">
+                            Condiciones de carrera y sobre-asignación de cupos durante ráfagas de solicitudes
+                            concurrentes en microservicios independientes.
+                        </p>
+                    </div>
+                    <!-- Solución -->
+                    <div class="flex flex-col gap-1 p-2.5 rounded bg-[#FAF5EC] border border-[#DCD4C7]/60">
+                        <span
+                            class="font-label-xs text-label-xs text-[#9a4429] font-mono uppercase tracking-wider font-medium">Solución
+                            Técnica</span>
+                        <p class="font-body-sm text-body-sm text-[#4A3F38] leading-relaxed">
+                            Implementación de locks distribuidos mediante Redis (Redlock), validación transaccional con
+                            control de versiones optimista y sistema resiliente de webhooks con reintentos
+                            exponenciales.
+                        </p>
+                    </div>
+                    <!-- Conceptos y Stack -->
+                    <div class="flex flex-col gap-1.5 pt-0.5">
+                        <span
+                            class="font-label-xs text-label-xs text-[#926452] font-mono uppercase tracking-wider font-medium">Conceptos
+                            &amp; Stack</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Node.js
+                                (NestJS)</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">TypeScript</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">PostgreSQL</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Distributed
+                                Locks</span>
+                            <span
+                                class="px-2 py-0.5 rounded bg-[#F3EBDB]/60 text-[#4A3F38] font-label-xs text-label-xs border border-[#DCD4C7] font-mono">Webhooks</span>
+                        </div>
+                    </div>
+                    <!-- Footer / GitHub CTA -->
+                    <div class="pt-1 border-t border-[#DCD4C7]/40">
+                        <a class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-[#FAF5EC] hover:bg-[#eee6d7] border border-[#DCD4C7] text-[#4A3F38] font-label-sm text-label-sm font-medium transition-colors"
+                            href="https://github.com" rel="noopener noreferrer" target="_blank">
+                            <span class="material-symbols-outlined text-[16px] text-[#4A3F38]">terminal</span>
+                            <span class="">Código fuente en GitHub ↗</span>
+                        </a>
+                    </div>
+                </article>
+            </section>
+            
+            <!-- 3. STACK TECNOLÓGICO -->
+            <section aria-labelledby="section-stack" class="flex flex-col gap-space-md">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 font-mono"><span
+                            class="material-symbols-outlined text-[#926452] text-[18px]">folder</span>
+                        <h2 class="font-label-md text-label-md text-[#4A3F38] font-medium tracking-tight"
+                            id="section-stack">~/ stack-tecnologico</h2>
+                    </div><span class="font-label-xs text-label-xs text-[#926452] font-mono">[core/tools]</span>
+                </div>
+                <!-- Core Backend Group -->
+                <div
+                    class="flex flex-col p-space-md rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm gap-space-sm">
+                    <div class="flex items-center justify-between pb-1">
+                        <span class="font-label-xs text-label-xs text-primary font-semibold uppercase tracking-wider">
+                            Backend Prioritario &amp; Runtime
+                        </span>
+                        <span class="font-label-xs text-label-xs text-secondary font-mono">Core Stack</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Go
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Python
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Node.js
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>FastAPI
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>NestJS
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>PostgreSQL
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Redis
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Docker
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-[#faf5ec] text-on-surface font-label-sm text-label-sm border border-border-subtle/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>RabbitMQ
+                        </span>
+                    </div>
+                </div>
+                <!-- Infrastructure & Complementary Group -->
+                <div
+                    class="flex flex-col p-space-md rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm gap-space-sm">
+                    <div class="flex items-center justify-between pb-1">
+                        <span class="font-label-xs text-label-xs text-secondary font-semibold uppercase tracking-wider">
+                            Complementario &amp; Herramientas
+                        </span>
+                        <span class="font-label-xs text-label-xs text-secondary font-mono">Infra &amp; CI/CD</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-space-sm py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm border border-border-subtle/30">Git</span>
+                        <span
+                            class="px-space-sm py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm border border-border-subtle/30">CI/CD
+                            (GitHub Actions)</span>
+                        <span
+                            class="px-space-sm py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm border border-border-subtle/30">AWS
+                            (ECS, S3)</span>
+                        <span
+                            class="px-space-sm py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm border border-border-subtle/30">Linux</span>
+                        <span
+                            class="px-space-sm py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm border border-border-subtle/30">GraphQL</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 4. CONTACTO DIRECTO (Versión 2: Acción Directa / Terminal Callout) -->
+            <section aria-labelledby="section-contacto" class="flex flex-col gap-space-md" id="contacto">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 font-mono"><span
+                            class="material-symbols-outlined text-[#926452] text-[18px]">folder</span>
+                        <h2 class="font-label-md text-label-md text-[#4A3F38] font-medium tracking-tight"
+                            id="section-contacto">~/ contacto-directo</h2>
+                    </div><span class="font-label-xs text-label-xs text-[#926452] font-mono">[sla &lt; 24h]</span>
+                </div>
+                <div class="flex flex-col p-5 rounded-xl bg-white border border-[#DCD4C7] shadow-sm gap-4">
+                    <!-- Cabecera con estatus y mensaje -->
+                    <div class="flex flex-col gap-1.5 pb-3 border-b border-[#DCD4C7]/60">
+                        <div class="flex items-center gap-2 font-mono text-label-xs text-[#926452]">
+                            <span class="inline-block w-2 h-2 rounded-full bg-emerald-600"></span>
+                            <span class="font-medium tracking-wide">● Disponibilidad inmediata // SLA &lt; 24h</span>
+                        </div>
+                        <p class="font-body-sm text-body-sm text-[#4A3F38] leading-relaxed">
+                            Respondo a consultas técnicas o propuestas en menos de 24 horas.
+                        </p>
+                    </div>
+                    <!-- Opciones directas: Botón primario y fila táctil de email -->
+                    <div class="flex flex-col gap-2.5">
+                        <!-- Botón Primario Calendly -->
+                        <a class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#4A3F38] hover:bg-[#352c26] text-white font-label-sm text-label-sm font-medium shadow-sm transition-colors text-center"
+                            href="https://calendly.com" rel="noopener noreferrer" target="_blank">
+                            <span class="material-symbols-outlined text-[18px] text-white">calendar_month</span>
+                            <span class="">Agendar 15 min en Calendly ↗</span>
+                        </a>
+                        <!-- Fila secundaria táctil para el mail -->
+                        <a class="flex items-center justify-between p-3 rounded-xl bg-[#FAF5EC] hover:bg-[#eee6d7] border border-[#DCD4C7] text-on-surface transition-colors group"
+                            href="mailto:martin.silva.backend@gmail.com" id="direct-email-link">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <span class="material-symbols-outlined text-[#9a4429] text-[20px] shrink-0">mail</span>
+                                <span class="font-label-sm text-label-sm text-[#4A3F38] font-mono truncate"
+                                    id="email-text-label">martin.silva.backend@gmail.com</span>
+                            </div>
+                            <span
+                                class="font-label-xs text-label-xs text-[#926452] font-mono shrink-0 ml-2 group-hover:text-primary transition-colors"
+                                id="email-action-feedback">Copiar o escribir ↗</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script>
+            (function initPortfolioInteractions() {
+                const emailLink = document.getElementById('direct-email-link');
+                const feedbackText = document.getElementById('email-action-feedback');
+                const emailToCopy = 'martin.silva.backend@gmail.com';
+
+                if (emailLink && feedbackText) {
+                    emailLink.addEventListener('contextmenu', (e) => {
+                        // Permitir clic secundario o mantener acción nativa
+                    });
+                    // Clic para copiar con feedback sutil antes de disparar mailto
+                    emailLink.addEventListener('click', async (e) => {
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            try {
+                                await navigator.clipboard.writeText(emailToCopy);
+                                const prev = feedbackText.textContent;
+                                feedbackText.textContent = '¡Copiado! ✓';
+                                setTimeout(() => {
+                                    feedbackText.textContent = prev;
+                                }, 2000);
+                            } catch (err) { }
+                        }
+                    });
+                }
+
+                const downloadCvBtn = document.getElementById('download-cv-btn');
+                if (downloadCvBtn) {
+                    downloadCvBtn.addEventListener('click', (e) => {
+                        const span = downloadCvBtn.querySelector('span:last-child');
+                        if (span) {
+                            const original = span.textContent;
+                            span.textContent = 'Descargando...';
+                            setTimeout(() => {
+                                span.textContent = original;
+                            }, 1500);
+                        }
+                    });
+                }
+            })();
+        </script>
+        <footer class="w-full px-gutter py-space-lg flex flex-col gap-space-xs text-center"></footer>
+    </main>
+    <nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-[#F3EBDB]/90 backdrop-blur-xl border-t border-border-subtle/30 shadow-[0_-1px_8px_rgba(74,63,56,0.04)]"
+        data-active-classes="text-primary font-medium">
+        <div class="flex justify-around items-center h-16 px-gutter"><a aria-current="page"
+                class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] gap-space-xs text-primary font-medium"
+                data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">terminal</span><span
+                    class="font-label-xs text-label-xs">Overview</span></a><a
+                class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] gap-space-xs text-on-surface-variant hover:text-on-surface"
+                data-path="projects" href="#"><span
+                    class="material-symbols-outlined text-[20px]">folder_code</span><span
+                    class="font-label-xs text-label-xs">Projects</span></a><a
+                class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] gap-space-xs text-on-surface-variant hover:text-on-surface"
+                data-path="stack" href="#"><span class="material-symbols-outlined text-[20px]">memory</span><span
+                    class="font-label-xs text-label-xs">Stack</span></a><a
+                class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] gap-space-xs text-on-surface-variant hover:text-on-surface"
+                data-path="contact" href="#contacto"><span
+                    class="material-symbols-outlined text-[20px]">alternate_email</span><span
+                    class="font-label-xs text-label-xs">Contact</span></a></div>
+    </nav>
+
+
+</body>
+
+</html>

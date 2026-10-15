@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+- Proyecto Astro con TypeScript strict. No agregar librerías sin preguntar.
+- Componentes en src/components, PascalCase, extensión .astro.
+- Props tipadas con `interface Props`.
+- Estilos con <style> dentro del componente (scope).
+- Colores, fuentes y espaciados SOLO desde variables CSS de src/styles/global.css. No inventar valores nuevos.
+- El diseño de referencia está en /reference. No modificar esa carpeta.
+- Explicá brevemente qué hiciste y por qué, soy principiante en frontend.
