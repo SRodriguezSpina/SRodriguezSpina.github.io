@@ -1,11 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro";
 ---
 
 <Layout
-  title="Santi Rodríguez — Desarrollador Backend"
+  title="Santi Rodríguez - Desarrollador Backend"
   description="Portfolio de Santi Rodríguez. Especializado en arquitectura de lógica de negocio, APIs e integración de IA aplicada."
 >
-  <Hero />
+  <main class="flex flex-col gap-space-lg pb-space-xl">
+    <Hero />
+    <Projects />
+  </main>
 </Layout>
