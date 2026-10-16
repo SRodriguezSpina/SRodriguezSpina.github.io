@@ -1,0 +1,103 @@
+---
+interface Props {}
+
+interface StackCategory {
+  title: string;
+  subtitle: string;
+  highlight: boolean;
+  skills: string[];
+}
+
+const stackCategories: StackCategory[] = [
+  {
+    title: "Backend Prioritario & Runtime",
+    subtitle: "Core Stack",
+    highlight: true,
+    skills: [
+      "Go",
+      "Python",
+      "Node.js",
+      "FastAPI",
+      "NestJS",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "RabbitMQ",
+    ],
+  },
+  {
+    title: "Complementario & Herramientas",
+    subtitle: "Infra & CI/CD",
+    highlight: false,
+    skills: [
+      "Git",
+      "CI/CD (GitHub Actions)",
+      "AWS (ECS, S3)",
+      "Linux",
+      "GraphQL",
+    ],
+  },
+];
+---
+
+<section
+  aria-labelledby="section-stack"
+  class="flex flex-col gap-space-md px-gutter w-full max-w-4xl mx-auto"
+>
+  <!-- Encabezado de la sección -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-lg text-secondary">folder</span>
+      <h2
+        id="section-stack"
+        class="font-mono text-label-md font-medium text-on-surface tracking-tight"
+      >
+        ~/ stack-tecnologico
+      </h2>
+    </div>
+    <span class="font-mono text-label-xs text-secondary">[core/tools]</span>
+  </div>
+
+  <!-- Grupos de tecnologías -->
+  <div class="flex flex-col gap-space-md">
+    {
+      stackCategories.map((category) => (
+        <div class="flex flex-col p-space-md rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm gap-space-sm">
+          <!-- Cabecera de la categoría -->
+          <div class="flex items-center justify-between pb-1">
+            <span
+              class:list={[
+                "font-mono text-label-xs font-semibold uppercase tracking-wider",
+                category.highlight ? "text-primary" : "text-secondary",
+              ]}
+            >
+              {category.title}
+            </span>
+            <span class="font-mono text-label-xs text-secondary">
+              {category.subtitle}
+            </span>
+          </div>
+
+          <!-- Listado de Chips de tecnologías -->
+          <div class="flex flex-wrap gap-2">
+            {category.skills.map((skill) => (
+              <span
+                class:list={[
+                  "inline-flex items-center gap-1.5 px-space-sm py-1 rounded text-on-surface font-mono text-label-sm border border-border-subtle/30",
+                  category.highlight
+                    ? "bg-surface-container-low"
+                    : "bg-surface-container",
+                ]}
+              >
+                {category.highlight && (
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary" />
+                )}
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
