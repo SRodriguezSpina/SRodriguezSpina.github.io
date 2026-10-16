@@ -1,0 +1,113 @@
+---
+interface Props {}
+
+// Constantes de contacto configurables al inicio del componente
+const calendlyUrl = "https://calendly.com/tu-usuario/30min";
+const contactEmail = "tu@email.com";
+---
+
+<section
+  id="contacto"
+  aria-labelledby="section-contacto"
+  class="flex flex-col gap-space-md px-gutter w-full max-w-4xl mx-auto"
+>
+  <!-- Encabezado de la sección -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-lg text-secondary">folder</span>
+      <h2
+        id="section-contacto"
+        class="font-mono text-label-md font-medium text-on-surface tracking-tight"
+      >
+        ~/ contacto-directo
+      </h2>
+    </div>
+    <span class="font-mono text-label-xs text-secondary">[sla &lt; 24h]</span>
+  </div>
+
+  <!-- Tarjeta principal de contacto -->
+  <div class="flex flex-col p-space-md rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm gap-space-md">
+    <!-- Cabecera de estado y disponibilidad -->
+    <div class="flex flex-col gap-1.5 pb-space-sm border-b border-border-subtle/40">
+      <div class="flex items-center gap-2 font-mono text-label-xs text-secondary">
+        <span class="inline-block size-2 rounded-full bg-emerald-600"></span>
+        <span class="font-medium tracking-wide">● Disponibilidad inmediata // SLA &lt; 24h</span>
+      </div>
+      <p class="font-sans text-body-sm text-on-surface leading-relaxed">
+        Respondo a consultas técnicas o propuestas en menos de 24 horas.
+      </p>
+    </div>
+
+    <!-- Acciones de contacto directo (Email primero, Calendly segundo) -->
+    <div class="flex flex-col gap-2.5">
+      <!-- 1. Bloque de Email con acciones separadas (Copiar y Escribir) -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between p-3 rounded-xl bg-surface-container-low border border-border-subtle/40 gap-3">
+        <!-- Dirección de correo -->
+        <div class="flex items-center gap-2.5 min-w-0">
+          <span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span>
+          <span class="font-mono text-label-sm text-on-surface truncate">
+            {contactEmail}
+          </span>
+        </div>
+
+        <!-- Botones de acción para el correo -->
+        <div class="flex items-center gap-2 shrink-0">
+          <!-- Botón de copiar al portapapeles -->
+          <button
+            type="button"
+            id="copy-email-btn"
+            data-email={contactEmail}
+            class="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-surface-container-lowest hover:bg-surface-container border border-border-subtle/40 text-on-surface font-mono text-label-xs font-medium transition-colors cursor-pointer"
+            aria-label="Copiar correo al portapapeles"
+          >
+            <span class="material-symbols-outlined text-sm text-secondary">content_copy</span>
+            <span id="copy-btn-text">Copiar</span>
+          </button>
+
+          <!-- Botón de abrir cliente de correo (mailto) -->
+          <a
+            href={`mailto:${contactEmail}`}
+            class="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-on-surface hover:bg-inverse-surface text-on-primary font-mono text-label-xs font-medium transition-colors"
+          >
+            <span class="material-symbols-outlined text-sm text-on-primary">send</span>
+            <span>Escribir ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Botón Primario de Calendly (abre en nueva pestaña) -->
+      <a
+        href={calendlyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-on-surface hover:bg-inverse-surface text-on-primary font-mono text-label-sm font-medium shadow-sm transition-colors text-center"
+      >
+        <span class="material-symbols-outlined text-lg text-on-primary">calendar_month</span>
+        <span>Agendar 15 min en Calendly ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const copyBtn = document.getElementById("copy-email-btn");
+  const copyText = document.getElementById("copy-btn-text");
+
+  if (copyBtn && copyText) {
+    copyBtn.addEventListener("click", async () => {
+      const email = copyBtn.getAttribute("data-email");
+      if (email && navigator.clipboard) {
+        try {
+          await navigator.clipboard.writeText(email);
+          const originalText = copyText.textContent;
+          copyText.textContent = "¡Copiado! ✓";
+          setTimeout(() => {
+            copyText.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error("Error al copiar al portapapeles:", err);
+        }
+      }
+    });
+  }
+</script>
