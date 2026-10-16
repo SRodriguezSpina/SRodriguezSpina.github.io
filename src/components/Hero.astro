@@ -1,0 +1,55 @@
+---
+const secondaryActionClass =
+  "flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-lg bg-surface-container-lowest border border-border-subtle/40 shadow-sm text-on-surface hover:bg-surface-container transition-colors";
+---
+
+<header class="flex flex-col items-center text-center px-gutter pt-margin gap-space-md">
+  <img
+    alt="Santi Rodríguez - Desarrollador Backend"
+    class="mx-auto size-24 rounded-full object-cover border-2 border-border-subtle/40 shadow-md bg-surface-container"
+    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX2b9sE9alerR64s3dYgbwDyQJHV1HaE8z4pHm2RF6j2ATop346QVaKn9VBCO7TMzAKStAmXy6UPZ9ckPo1_y4sEy0kKLui1LvZrmEPaMg1BIM1S5ZkCjFfI6Y1rFNlNC3OwGphRo0hPNzlGS7r9NCjRk8m0Tb7jPmjCS73jVLsTz6ciCyCzMCaoUTi-doNDoejzPKLOKFj_mRWQP7rXctB81ae9pffnCTj5HZOK26r5pmVb4rpwwQ0Qm9HDUidvlGgRqcgA8xEFf2eQ"
+  />
+  <div class="flex flex-col items-center gap-1.5 max-w-sm">
+    <h1 class="font-sans text-headline-xl-mobile text-inverse-surface">
+      Santi Rodríguez
+    </h1>
+    <span class="font-mono text-label-md text-secondary tracking-wide">
+      Desarrollador Backend
+    </span>
+    <p class="font-sans text-body-md text-on-surface-variant pt-space-xs">
+      Especializado en arquitectura de lógica de negocio, diseño de APIs
+      RESTful/GraphQL escalables e integración de IA aplicada.
+    </p>
+  </div>
+  <div class="grid w-full grid-cols-2 gap-space-xs pt-space-xs">
+    <a
+      class={secondaryActionClass}
+      href="https://github.com"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <span class="material-symbols-outlined text-lg text-on-surface">terminal</span>
+      <span class="font-mono text-label-sm font-medium">GitHub</span>
+    </a>
+    <a
+      class={secondaryActionClass}
+      href="https://linkedin.com"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <span class="material-symbols-outlined text-lg text-on-surface">share</span>
+      <span class="font-mono text-label-sm font-medium">LinkedIn</span>
+    </a>
+    <a class={secondaryActionClass} href="#contacto">
+      <span class="material-symbols-outlined text-lg text-on-surface">alternate_email</span>
+      <span class="font-mono text-label-sm font-medium">Contacto</span>
+    </a>
+    <a
+      class="flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-lg bg-on-surface text-on-primary shadow-sm hover:opacity-90 transition-opacity"
+      href="#cv-download"
+    >
+      <span class="material-symbols-outlined text-lg text-on-primary">file_download</span>
+      <span class="font-mono text-label-sm font-medium text-on-primary">CV (PDF)</span>
+    </a>
+  </div>
+</header>
