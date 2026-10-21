@@ -8,42 +8,55 @@ interface Project {
   solution: string;
   tags: string[];
   href: string;
+  // + href a demo o video opcional
 }
 
 const projects: Project[] = [
   {
-    title: "Motor de Facturación y Liquidación Distribuida",
-    category: "Sistemas Distribuidos",
+    title: "Manual RAG Assistant",
+    category: "Backend + AI",
     problem:
-      "Cuellos de botella y bloqueos en la liquidación financiera con más de 100k transacciones mensuales en bases relacionales monolíticas.",
+      "Los intervalos de mantenimiento de una moto están enterrados en tablas de manuales PDF de cientos de páginas, uno por modelo y año. Un LLM sin fuentes responde de memoria e inventa valores, y además calcula mal, un riesgo real cuando el dato define cuándo hacer un service.",
     solution:
-      "Arquitectura asíncrona por eventos con workers concurrentes en Go, colas de mensajería, control de idempotencia transaccional y procesamiento en batches optimizados.",
-    tags: ["Go", "PostgreSQL", "RabbitMQ", "Workers", "Event-Driven"],
-    href: "https://github.com",
+      "Servidor MCP que expone herramientas a cualquier cliente compatible (p. ej. Claude Desktop): búsqueda híbrida (BM25 + embeddings locales + RRF) que devuelve fragmentos con sección y página de origen, extracción de tablas del PDF, y un cálculo determinístico del próximo service sin LLM. El modelo orquesta, pero los datos y las cuentas salen de fuentes verificables.",
+    tags: ["Kotlin", "Spring Boot", "Spring AI", "MCP", "Tool Calling", "Lucene (BM25)", "ONNX", "SQLite"],
+    href: "https://github.com/SRodriguezSpina/manual-rag-assistant",
   },
   {
-    title: "API de Búsqueda Semántica y RAG Documental",
-    category: "RAG & Embeddings",
+    title: "BookLibre",
+    category: "Full-Stack Development",
     problem:
-      "Recuperación lenta y baja relevancia en consultas léxicas sobre un repositorio de 50.000 documentos técnicos no estructurados.",
+      "Trabajo académico: Desarrollar una aplicación web que integre servicios backend, persistencia de datos y una interfaz de usuario para un sistema de préstamos de libros.",
     solution:
-      "Pipeline de ingesta incremental con chunking adaptativo, generación de embeddings densos indexados en Qdrant y capa de caché semántico en Redis.",
-    tags: ["Python (FastAPI)", "Qdrant", "Redis", "Vector DB", "LangChain"],
-    href: "https://github.com",
-  },
-  {
-    title: "Gestor de Reservas con Control de Concurrencia",
-    category: "Proyecto Académico",
-    problem:
-      "Condiciones de carrera y sobre-asignación de cupos durante ráfagas de solicitudes concurrentes en microservicios independientes.",
-    solution:
-      "Implementación de locks distribuidos mediante Redis (Redlock), validación transaccional con control de versiones optimista y sistema resiliente de webhooks con reintentos exponenciales.",
+      "Desarrollo de servicios backend con Kotlin y Spring Boot, APIs REST y esquemas GraphQL, integrando PostgreSQL y MongoDB para persistencia, Redis para caché y React con TypeScript para el frontend.",
     tags: [
-      "Node.js (NestJS)",
-      "TypeScript",
+      "Kotlin",
+      "Spring Boot",
+      "REST API",
+      "GraphQL",
       "PostgreSQL",
-      "Distributed Locks",
-      "Webhooks",
+      "MongoDB",
+      "Redis",
+      "React",
+      "TypeScript",
+      "Docker",
+    ],
+    href: "https://github.com",
+  },
+  {
+    title: "Algo que pedir",
+    category: "Full-Stack Development",
+    problem:
+      "Trabajo académico: desarrollar una aplicación web que permita a los locales gastronómicos gestionar su información y oferta de platos, y a los consumidores personalizar sus preferencias alimentarias.",
+    solution:
+      "Implementación de lógica de negocio para la gestión de locales, publicación de platos e ingredientes, y administración de preferencias del consumidor, incluyendo locales y platos favoritos, ingredientes preferidos e ingredientes a evitar. Desarrollo de interfaces de usuario con React y TypeScript.",
+    tags: [
+      "Kotlin",
+      "Spring Boot",
+      "React",
+      "TypeScript",
+      "Desarrollo Web",
+      "Lógica de Negocio"
     ],
     href: "https://github.com",
   },
@@ -57,7 +70,7 @@ const projects: Project[] = [
   <!-- Encabezado de la sección -->
   <div class="flex items-center justify-between">
     <div class="flex items-center gap-2">
-      <span class="material-symbols-outlined text-lg text-secondary">folder</span>
+      <img src="/icons/folder.svg" alt="Proyectos" class="w-6 h-6" />
       <h2
         id="section-proyectos"
         class="font-mono text-label-md font-medium text-on-surface tracking-tight"
@@ -78,13 +91,14 @@ const projects: Project[] = [
           <!-- Contenido superior -->
           <div class="flex flex-col gap-space-sm">
             <!-- Título y Categoría -->
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-sans text-headline-sm text-on-surface font-semibold leading-snug">
-                {project.title}
-              </h3>
+            <div class="flex flex-col items-start justify-between gap-2">
               <span class="shrink-0 px-2 py-0.5 rounded bg-surface-container-low border border-border-subtle/40 font-mono text-label-xs text-secondary whitespace-nowrap">
                 {project.category}
               </span>
+              <h3 class="font-sans text-headline-sm text-on-surface font-semibold leading-snug">
+                {project.title}
+              </h3>
+              
             </div>
 
             <!-- Problema -->
@@ -130,8 +144,8 @@ const projects: Project[] = [
               rel="noopener noreferrer"
               class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border-subtle/40 text-on-surface font-mono text-label-sm font-medium transition-colors"
             >
-              <span class="material-symbols-outlined text-base text-on-surface">terminal</span>
-              <span>Código fuente en GitHub ↗</span>
+              <img src="/icons/github-logo.svg" alt="GitHub" class="w-5 h-5" />
+              <span>Código fuente en GitHub</span>
             </a>
           </div>
         </article>

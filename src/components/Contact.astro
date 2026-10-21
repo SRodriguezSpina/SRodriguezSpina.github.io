@@ -43,7 +43,7 @@ const contactEmail = "santiagospina03@gmail.com";
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between p-3 rounded-xl bg-surface-container-low border border-border-subtle/40 gap-3">
         <!-- Dirección de correo -->
         <div class="flex items-center gap-2.5 min-w-0">
-          <span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span>
+          <img src="/icons/message.svg" alt="Correo electrónico" class="w-6 h-6" />
           <span class="font-mono text-label-sm text-on-surface truncate">
             {contactEmail}
           </span>
@@ -59,7 +59,7 @@ const contactEmail = "santiagospina03@gmail.com";
             class="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-surface-container-lowest hover:bg-surface-container border border-border-subtle/40 text-on-surface font-mono text-label-xs font-medium transition-colors cursor-pointer"
             aria-label="Copiar correo al portapapeles"
           >
-            <span class="material-symbols-outlined text-sm text-secondary">content_copy</span>
+            <img src="/icons/copy.svg" alt="Copiar correo" class="w-6 h-6" />
             <span id="copy-btn-text">Copiar</span>
           </button>
 
@@ -68,8 +68,8 @@ const contactEmail = "santiagospina03@gmail.com";
             href={`mailto:${contactEmail}`}
             class="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-on-surface hover:bg-inverse-surface text-on-primary font-mono text-label-xs font-medium transition-colors"
           >
-            <span class="material-symbols-outlined text-sm text-on-primary">send</span>
-            <span>Escribir ↗</span>
+            <img src="/icons/paper-plane.svg" alt="Escribir correo" class="w-6 h-6" />
+            <span>Escribir</span>
           </a>
         </div>
       </div>
@@ -81,7 +81,7 @@ const contactEmail = "santiagospina03@gmail.com";
         rel="noopener noreferrer"
         class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-on-surface hover:bg-inverse-surface text-on-primary font-mono text-label-sm font-medium shadow-sm transition-colors text-center"
       >
-        <span class="material-symbols-outlined text-lg text-on-primary">calendar_month</span>
+        <img src="/icons/calendar.svg" alt="Calendly" class="w-6 h-6" />
         <span>Agendar 15 min en Calendly ↗</span>
       </a>
     </div>
