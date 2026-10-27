@@ -1,0 +1,131 @@
+---
+interface Props {}
+
+interface StackCategory {
+  title: string;
+  subtitle: string;
+  highlight: boolean;
+  skills: string[];
+}
+
+const stackCategories: StackCategory[] = [
+  {
+    title: "Backend & APIs",
+    subtitle: "Core Stack",
+    highlight: true,
+    skills: [
+      "Kotlin",
+      "Java",
+      "Spring Boot",
+      "REST APIs",
+      "GraphQL",
+      "JPA / Hibernate",
+    ],
+  },
+  {
+    title: "AI Engineering & RAG",
+    subtitle: "AI Applications",
+    highlight: true,
+    skills: [
+      "Spring AI",
+      "RAG",
+      "BM25",
+      "Embeddings",
+      "Hybrid Search",
+      "RRF",
+      "MCP",
+      "Tool Calling",
+    ],
+  },
+  {
+    title: "Databases & Storage",
+    subtitle: "Data Layer",
+    highlight: false,
+    skills: [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "SQL",
+    ],
+  },
+  {
+    title: "Frontend & Tools",
+    subtitle: "Complementary",
+    highlight: false,
+    skills: [
+      "TypeScript",
+      "React",
+      "HTML5",
+      "CSS3",
+      "Git",
+      "GitHub",
+      "Docker",
+      "Python",
+      "Scikit-learn",
+    ],
+  },
+];
+---
+
+<section
+  aria-labelledby="section-stack"
+  class="flex flex-col gap-space-md px-gutter w-full max-w-4xl mx-auto lg:max-w-6xl"
+>
+  <!-- Encabezado de la sección -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <img src="/icons/folder.svg" alt="Stack Tecnológico" class="w-6 h-6" />
+      <h2
+        id="section-stack"
+        class="font-mono text-label-md font-medium text-on-surface tracking-tight"
+      >
+        ~/ stack-tecnologico
+      </h2>
+    </div>
+    <span class="font-mono text-label-xs text-secondary">[core/tools]</span>
+  </div>
+
+  <!-- Grupos de tecnologías -->
+  <div class="flex flex-col gap-space-md lg:grid lg:grid-cols-2">
+    {
+      stackCategories.map((category) => (
+        <div class="flex flex-col p-space-md rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm gap-space-sm lg:rounded-lg lg:p-space-lg lg:shadow-none">
+          <!-- Cabecera de la categoría -->
+          <div class="flex items-center justify-between pb-1">
+            <span
+              class:list={[
+                "font-mono text-label-xs font-semibold uppercase tracking-wider",
+                category.highlight ? "text-primary" : "text-secondary",
+              ]}
+            >
+              {category.title}
+            </span>
+            <span class="font-mono text-label-xs text-secondary">
+              {category.subtitle}
+            </span>
+          </div>
+
+          <!-- Listado de Chips de tecnologías -->
+          <div class="flex flex-wrap gap-2">
+            {category.skills.map((skill) => (
+              <span
+                class:list={[
+                  "inline-flex items-center gap-1.5 px-space-sm py-1 rounded text-on-surface font-mono text-label-sm border border-border-subtle/30",
+                  category.highlight
+                    ? "bg-surface-container-low"
+                    : "bg-surface-container",
+                ]}
+              >
+                {category.highlight && (
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary" />
+                )}
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

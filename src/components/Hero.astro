@@ -3,17 +3,17 @@ const secondaryActionClass =
   "flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-lg bg-surface-container-lowest border border-border-subtle/40 shadow-sm text-on-surface hover:bg-surface-container transition-colors";
 ---
 
-<header class="flex flex-col items-center text-center px-gutter pt-margin gap-space-md">
+<header class="flex flex-col items-center text-center px-gutter pt-margin gap-space-md lg:mx-auto lg:mt-margin lg:grid lg:w-full lg:max-w-6xl lg:grid-cols-[auto_minmax(0,1fr)_20rem] lg:items-center lg:gap-space-lg lg:rounded-lg lg:border lg:border-border-subtle/40 lg:bg-surface-container-lowest lg:p-space-xl lg:text-left">
   <img
     alt="Santi Rodríguez - Desarrollador Backend"
-    class="mx-auto size-24 rounded-full object-cover border-2 border-border-subtle/40 shadow-md bg-surface-container"
-    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX2b9sE9alerR64s3dYgbwDyQJHV1HaE8z4pHm2RF6j2ATop346QVaKn9VBCO7TMzAKStAmXy6UPZ9ckPo1_y4sEy0kKLui1LvZrmEPaMg1BIM1S5ZkCjFfI6Y1rFNlNC3OwGphRo0hPNzlGS7r9NCjRk8m0Tb7jPmjCS73jVLsTz6ciCyCzMCaoUTi-doNDoejzPKLOKFj_mRWQP7rXctB81ae9pffnCTj5HZOK26r5pmVb4rpwwQ0Qm9HDUidvlGgRqcgA8xEFf2eQ"
+    class="mx-auto size-24 rounded-full object-cover border-2 border-border-subtle/40 shadow-md bg-surface-container lg:size-28 lg:rounded-lg lg:border-4 lg:shadow-none"
+    src="/SantiagoRodriguez.jpg"
   />
-  <div class="flex flex-col items-center gap-1.5 max-w-sm">
-    <h1 class="font-sans text-headline-xl-mobile text-inverse-surface">
+  <div class="flex max-w-sm flex-col items-center gap-1.5 lg:max-w-none lg:items-start">
+    <h1 class="font-sans text-headline-xl-mobile text-inverse-surface lg:text-headline-xl">
       Santi Rodríguez
     </h1>
-    <span class="font-mono text-label-md text-secondary tracking-wide">
+    <span class="font-mono text-label-md text-secondary tracking-wide lg:text-primary">
       Desarrollador Backend
     </span>
     <p class="font-sans text-body-md text-on-surface-variant pt-space-xs">
@@ -21,34 +21,34 @@ const secondaryActionClass =
       RESTful/GraphQL escalables e integración de IA aplicada.
     </p>
   </div>
-  <div class="grid w-full grid-cols-2 gap-space-xs pt-space-xs">
+  <div class="grid w-full grid-cols-2 gap-space-xs pt-space-xs lg:w-80 lg:grid-cols-3 lg:pt-0">
     <a
       class={secondaryActionClass}
-      href="https://github.com"
+      href="https://github.com/SRodriguezSpina"
       rel="noopener noreferrer"
       target="_blank"
     >
-      <span class="material-symbols-outlined text-lg text-on-surface">terminal</span>
-      <span class="font-mono text-label-sm font-medium">GitHub</span>
+      <img src="/icons/github-logo.svg" alt="GitHub" class="w-6 h-6 lg:h-4 lg:w-4" />
+      <span class="font-mono text-label-sm font-medium lg:whitespace-nowrap lg:text-label-xs">GitHub</span>
     </a>
     <a
       class={secondaryActionClass}
-      href="https://linkedin.com"
+      href="https://www.linkedin.com/in/santiago-rodriguezzz/"
       rel="noopener noreferrer"
       target="_blank"
     >
-      <span class="material-symbols-outlined text-lg text-on-surface">share</span>
-      <span class="font-mono text-label-sm font-medium">LinkedIn</span>
+      <img src="/icons/linkedin-logo.svg" alt="LinkedIn" class="w-6 h-6 lg:h-4 lg:w-4" />
+      <span class="font-mono text-label-sm font-medium lg:whitespace-nowrap lg:text-label-xs">LinkedIn</span>
     </a>
     <a class={secondaryActionClass} href="#contacto">
-      <span class="material-symbols-outlined text-lg text-on-surface">alternate_email</span>
-      <span class="font-mono text-label-sm font-medium">Contacto</span>
+      <img src="/icons/at.svg" alt="Contacto" class="w-6 h-6 lg:h-4 lg:w-4" />
+      <span class="font-mono text-label-sm font-medium lg:whitespace-nowrap lg:text-label-xs">Contacto</span>
     </a>
     <a
-      class="flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-lg bg-on-surface text-on-primary shadow-sm hover:opacity-90 transition-opacity"
+      class="order-last flex items-center justify-center gap-2 py-2.5 px-space-sm rounded-lg bg-on-surface text-on-primary shadow-sm hover:opacity-90 transition-opacity lg:order-first lg:col-span-3 lg:shadow-none"
       href="#cv-download"
     >
-      <span class="material-symbols-outlined text-lg text-on-primary">file_download</span>
+      <img src="/icons/download.svg" alt="Descargar CV" class="w-6 h-6" />
       <span class="font-mono text-label-sm font-medium text-on-primary">CV (PDF)</span>
     </a>
   </div>
