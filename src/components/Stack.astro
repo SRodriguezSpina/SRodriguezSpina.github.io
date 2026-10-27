@@ -70,7 +70,7 @@ const stackCategories: StackCategory[] = [
 
 <section
   aria-labelledby="section-stack"
-  class="flex flex-col gap-space-md px-gutter w-full max-w-4xl mx-auto"
+  class="flex flex-col gap-space-md px-gutter w-full max-w-4xl mx-auto lg:max-w-6xl"
 >
   <!-- Encabezado de la sección -->
   <div class="flex items-center justify-between">
@@ -87,10 +87,10 @@ const stackCategories: StackCategory[] = [
   </div>
 
   <!-- Grupos de tecnologías -->
-  <div class="flex flex-col gap-space-md">
+  <div class="flex flex-col gap-space-md lg:grid lg:grid-cols-2">
     {
       stackCategories.map((category) => (
-        <div class="flex flex-col p-space-md rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm gap-space-sm">
+        <div class="flex flex-col p-space-md rounded-xl bg-surface-container-lowest border border-border-subtle/40 shadow-sm gap-space-sm lg:rounded-lg lg:p-space-lg lg:shadow-none">
           <!-- Cabecera de la categoría -->
           <div class="flex items-center justify-between pb-1">
             <span
